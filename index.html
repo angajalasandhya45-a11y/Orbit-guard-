@@ -20,6 +20,20 @@ main{max-width:1100px;margin:auto;padding:26px 18px 60px}.intro{display:flex;jus
 footer{max-width:1100px;margin:auto;padding:0 18px 30px;color:var(--muted);font-size:12px}a{color:var(--cyan)}
 @media(max-width:700px){.intro{display:block}.pill{display:inline-block;margin-top:14px}.grid{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr}.detail{grid-template-columns:1fr}}
 </style>
+ 
+<script type="module">
+import * as satellite from
+  'https://cdn.jsdelivr.net/npm/satellite.js@7.1.0/+esm';
+
+window.satellite = satellite;
+
+console.log("OrbitGuard: Satellite.js loaded successfully!");
+
+window.dispatchEvent(
+  new Event('satellitejs-ready')
+);
+</script>
+ 
 </head>
 <body>
 <header><div class="brand"><div class="logo">ðŸ›°ï¸</div><div><h1>ORBITGUARD</h1><p>SPACE OBJECT MONITORING â€¢ PHASE 1</p></div></div></header>
