@@ -107,7 +107,21 @@ async function load(){
   if(!response.ok)throw new Error(`CelesTrak returned HTTP ${response.status}. Stop here; do not repeatedly retry. Check the provider status or try again later.`);
   const data=await response.json();
   if(!Array.isArray(data))throw new Error('The provider response was not the expected JSON list.');
-  localStorage.setItem(cacheKey(key),JSON.stringify({time:Date.now(),data}));
+  if (group !== 'ACTIVE') {
+  try {
+    localStorage.setItem(
+      cacheKey(key),
+      JSON.stringify({
+        time: Date.now(),
+        data: data
+      })
+    );
+  } catch (storageError) {
+    console.warn("Browser storage full. Continuing without cache.");
+  }
+} else {
+  console.log("Large dataset. Cache skipped.");
+ }
   render(data);status(`Success: received ${data.length} object records from CelesTrak. Select a row for details.`,'ok');
   if(data[0])selectObject(data[0]);
  }catch(e){status(`${e.message} If this is a browser network/CORS error, open the CelesTrak source link directly to check access. No fake data has been inserted.`,'err')}
