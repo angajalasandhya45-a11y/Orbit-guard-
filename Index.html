@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORBIT GUARD | Space Intelligence</title>
+
+<style>
+:root {
+  --bg:#07111f;
+  --panel:#101f33;
+  --panel2:#152941;
+  --blue:#27baff;
+  --cyan:#52e0e8;
+  --text:#edf5ff;
+  --muted:#9aadc5;
+  --border:#263d58;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  line-height:1.6;
+}
+header {
+  padding:20px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:#0c1b2e;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.logo {font-size:23px;font-weight:bold;color:var(--blue)}
+.logo span {color:white}
+nav {display:flex;gap:17px;flex-wrap:wrap}
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+}
+nav a:hover {color:var(--cyan)}
+section {padding:55px 6%;scroll-margin-top:85px}
+.container {max-width:1200px;margin:auto}
+.hero {
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  background:
+  radial-gradient(ellipse at 75% 45%,#17456d 0%,#0b1b31 38%,#07111f 75%);
+}
+.hero h1 {font-size:clamp(35px,7vw,65px);line-height:1.15}
+.hero h1 span {color:var(--blue)}
+.hero p {
+  color:var(--muted);
+  max-width:600px;
+  margin:20px 0;
+}
+.btn {
+  display:inline-block;
+  padding:12px 22px;
+  border:0;
+  border-radius:7px;
+  background:#087dbb;
+  color:white;
+  text-decoration:none;
+  cursor:pointer;
+  margin:5px 5px 5px 0;
+}
+.btn:hover {background:#079edc}
+.btn.secondary {background:#233a55}
+.eyebrow {
+  color:var(--cyan);
+  font-size:12px;
+  letter-spacing:3px;
+  margin-bottom:12px;
+}
+h2 {font-size:29px;margin-bottom:10px}
+.subtitle {color:var(--muted);margin-bottom:28px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:16px;
+}
+.card,.panel {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:21px;
+}
+.card h3 {font-size:14px;color:var(--muted)}
+.number {font-size:30px;color:var(--cyan);font-weight:bold;margin:9px 0}
+.small {font-size:12px;color:var(--muted)}
+.grid2 {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.panel {margin-top:20px}
+.panel h3 {color:var(--cyan);margin-bottom:12px}
+.tag {
+  display:inline-block;
+  border:1px solid var(--border);
+  background:#192f49;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+  margin:4px;
+}
+.good {color:#4ee5a2}
+.medium {color:#ffd36c}
+.high {color:#ff8181}
+table {width:100%;border-collapse:collapse;min-width:520px}
+th,td {
+  padding:13px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:13px;
+}
+th {color:var(--cyan)}
+.table-wrap {overflow-x:auto}
+.orbit-box {
+  background:radial-gradient(circle at center,#16476b,#091729 65%);
+  border:1px solid var(--border);
+  border-radius:15px;
+  min-height:300px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+.orbit-box svg {width:100%;max-width:540px}
+input,select {
+  background:#0a192a;
+  border:1px solid var(--border);
+  padding:12px;
+  color:white;
+  border-radius:7px;
+  width:100%;
+  margin:8px 0 15px;
+}
+label {font-size:13px;color:var(--muted)}
+.alert {
+  padding:15px;
+  margin:12px 0;
+  background:#172b40;
+  border-left:4px solid var(--cyan);
+  border-radius:7px;
+}
+footer {
+  text-align:center;
+  padding:35px;
+  background:#0c1b2e;
+  color:var(--muted);
+}
+ul {padding-left:20px;color:var(--muted)}
+li {margin:8px 0}
+.statline {
+  height:8px;
+  border-radius:10px;
+  background:#263d58;
+  overflow:hidden;
+  margin:10px 0 17px;
+}
+.statline span {display:block;height:100%;background:var(--cyan)}
+.hidden {display:none}
+@media(max-width:650px) {
+  header {align-items:flex-start;flex-direction:column}
+  nav {gap:12px}
+  section {padding:42px 5%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">✦ ORBIT <span>GUARD</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#tracking">Tracking</a>
+    <a href="#risk">Risk</a>
+    <a href="#mission">Missions</a>
+    <a href="#security">Security</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+<div class="container">
+  <div class="eyebrow">SPACE SITUATIONAL AWARENESS PLATFORM</div>
+  <h1>PROTECTING<br>OUR <span>ORBIT.</span></h1>
+  <p>
+    Orbit Guard is a satellite monitoring and space
+    situational awareness platform designed to help
+    satellite operators understand orbital conjunction
+    risks, monitor space objects and support mission planning.
+  </p>
+  <a class="btn" href="#dashboard">Explore Dashboard →</a>
+  <a class="btn secondary" href="#about">Learn More</a>
+  <p class="small">Space awareness • Orbital monitoring • Data security</p>
+</div>
+</section>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+<div class="container">
+  <div class="eyebrow">SYSTEM OVERVIEW</div>
+  <h2>Monitoring Dashboard</h2>
+  <p class="subtitle">Illustrative project data for demonstration.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Tracked Objects</h3>
+      <div class="number">12,450</div>
+      <p class="small">Sample catalog</p>
+    </div>
+    <div class="card">
+      <h3>Active Satellites</h3>
+      <div class="number">8,920</div>
+      <p class="small">Sample statistic</p>
+    </div>
+    <div class="card">
+      <h3>Risk Notifications</h3>
+      <div class="number">06</div>
+      <p class="small">Illustrative alerts</p>
+    </div>
+    <div class="card">
+      <h3>System Status</h3>
+      <div class="number good">ACTIVE</div>
+      <p class="small">Demo interface status</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Platform Information</h3>
+      <p class="small">Data processing workflow</p>
+      <div class="alert">01. Orbital data collection</div>
+      <div class="alert">02. Data validation</div>
+      <div class="alert">03. SGP4 propagation stage</div>
+      <div class="alert">04. Position and orbit visualization</div>
+      <div class="alert">05. Risk awareness and operator review</div>
+    </div>
+    <div class="panel">
+      <h3>Orbit Categories</h3>
+      <p>LEO – Low Earth Orbit</p>
+      <div class="statline"><span style="width:85%"></span></div>
+      <p>MEO – Medium Earth Orbit</p>
+      <div class="statline"><span style="width:55%"></span></div>
+      <p>GEO – Geostationary Orbit</p>
+      <div class="statline"><span style="width:40%"></span></div>
+      <p>HEO – Highly Elliptical Orbit</p>
+      <div class="statline"><span style="width:30%"></span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- TRACKING -->
+
+<section id="tracking">
+<div class="container">
+  <div class="eyebrow">SPACE OBJECT VISUALIZATION</div>
+  <h2>Satellite & Orbit Monitoring</h2>
+  <p class="subtitle">
+    Conceptual Earth and orbital visualization.
+    Not a live position display.
+  </p>
+
+  <div class="orbit-box">
+    <svg viewBox="0 0 500 330" role="img"
+    aria-label="Illustration of Earth and satellite orbits">
+      <defs>
+        <radialGradient id="earth">
+          <stop offset="0%" stop-color="#50d7e9"/>
+          <stop offset="75%" stop-color="#1673a8"/>
+          <stop offset="100%" stop-color="#092e57"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="250" cy="165" rx="210" ry="70"
+        fill="none" stroke="#4cc5e8" stroke-width="1.5"
+        transform="rotate(-25 250 165)"/>
+      <ellipse cx="250" cy="165" rx="185" ry="115"
+        fill="none" stroke="#8199e9" stroke-width="1.5"
+        transform="rotate(30 250 165)"/>
+      <ellipse cx="250" cy="165" rx="145" ry="135"
+        fill="none" stroke="#54d6c9" stroke-width="1.5"
+        transform="rotate(75 250 165)"/>
+      <circle cx="250" cy="165" r="65" fill="url(#earth)"/>
+      <path d="M220 120 L245 135 L260 120 L280 145 L265 160 L280 180 L250 200 L230 180 L215 150 Z"
+        fill="#5dbb84" opacity=".8"/>
+      <circle cx="120" cy="100" r="6" fill="#fff"/>
+      <circle cx="380" cy="190" r="6" fill="#52e0e8"/>
+      <circle cx="290" cy="42" r="5" fill="#fff"/>
+      <text x="250" y="255" fill="white"
+        font-size="13" text-anchor="middle">EARTH</text>
+      <text x="250" y="285" fill="#9aadc5"
+        font-size="11" text-anchor="middle">ORBITAL CONCEPT</text>
+    </svg>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Orbital Data</h3>
+      <p class="small">TLE – Two-Line Element Set</p>
+      <p>Standardized orbital element information used
+      to describe the orbit of a space object.</p>
+      <span class="tag">Position data</span>
+      <span class="tag">Velocity data</span>
+      <span class="tag">Epoch information</span>
+    </div>
+    <div class="panel">
+      <h3>SGP4 Processing</h3>
+      <p>SGP4 means Simplified General Perturbations 4.</p>
+      <p>It is an orbital propagation model used with
+      TLE data to estimate satellite positions over time.</p>
+      <span class="tag">TLE input</span>
+      <span class="tag">Propagation model</span>
+      <span class="tag">Position estimation</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Object Search – Demo</h3>
+    <label for="objectSearch">Enter object name or catalog ID</label>
+    <input id="objectSearch" placeholder="Search satellite or object">
+    <button class="btn" onclick="searchObject()">Search</button>
+    <p id="searchResult" class="small"></p>
+  </div>
+</div>
+</section>
+
+<!-- RISK -->
+
+<section id="risk">
+<div class="container">
+  <div class="eyebrow">CONJUNCTION AWARENESS</div>
+  <h2>Orbital Risk Monitoring</h2>
+  <p class="subtitle">
+    Illustrative risk categories for operator awareness.
+    These are not computed collision probabilities.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Low Priority</h3>
+      <div class="number good">02</div>
+      <p class="small">Sample notifications</p>
+    </div>
+    <div class="card">
+      <h3>Medium Priority</h3>
+      <div class="number medium">03</div>
+      <p class="small">Sample notifications</p>
+    </div>
+    <div class="card">
+      <h3>High Priority</h3>
+      <div class="number high">01</div>
+      <p class="small">Sample notification</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Sample Risk Notifications</h3>
+    <div class="alert">
+      <b class="good">LOW PRIORITY</b>
+      <p class="small">Example: Routine orbital monitoring review.</p>
+    </div>
+    <div class="alert">
+      <b class="medium">MEDIUM PRIORITY</b>
+      <p class="small">Example: Additional data quality review recommended.</p>
+    </div>
+    <div class="alert">
+      <b class="high">HIGH PRIORITY</b>
+      <p class="small">Example: Operator attention required for a simulated close-approach alert.</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Risk Assessment Factors</h3>
+    <ul>
+      <li>Estimated minimum separation</li>
+      <li>Relative motion information</li>
+      <li>Orbital data uncertainty</li>
+      <li>Data quality and update time</li>
+      <li>Operator review and confirmation</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<!-- MISSION -->
+
+<section id="mission">
+<div class="container">
+  <div class="eyebrow">MISSION MANAGEMENT</div>
+  <h2>Mission Operations</h2>
+  <p class="subtitle">Mission overview and operator coordination.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Mission Alpha</h3>
+      <div class="number">ACTIVE</div>
+      <p class="small">Sample mission status</p>
+    </div>
+    <div class="card">
+      <h3>Mission Beta</h3>
+      <div class="number">PLANNED</div>
+      <p class="small">Sample mission status</p>
+    </div>
+    <div class="card">
+      <h3>Mission Gamma</h3>
+      <div class="number">REVIEW</div>
+      <p class="small">Sample mission status</p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>Mission Workflow</h3>
+    <div class="alert">01. Mission registration</div>
+    <div class="alert">02. Orbital information review</div>
+    <div class="alert">03. Space environment monitoring</div>
+    <div class="alert">04. Risk notification review</div>
+    <div class="alert">05. Operator decision and documentation</div>
+  </div>
+</div>
+</section>
+
+<!-- SECURITY -->
+
+<section id="security">
+<div class="container">
+  <div class="eyebrow">DATA PROTECTION</div>
+  <h2>Orbit Guard Security Center</h2>
+  <p class="subtitle">
+    Protecting project information against unauthorized
+    access, misuse and theft.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Authentication</h3>
+      <div class="number">🔐</div>
+      <p class="small">Password and multi-factor authentication concepts</p>
+    </div>
+    <div class="card">
+      <h3>Encryption</h3>
+      <div class="number">🛡️</div>
+      <p class="small">Data encryption in transit and at rest</p>
+    </div>
+    <div class="card">
+      <h3>Access Control</h3>
+      <div class="number">👤</div>
+      <p class="small">Role-based permissions</p>
+    </div>
+    <div class="card">
+      <h3>Monitoring</h3>
+      <div class="number">📊</div>
+      <p class="small">Activity logging and security reviews</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel">
+      <h3>Security Measures</h3>
+      <ul>
+        <li>Strong authentication and MFA</li>
+        <li>Encrypted data communication</li>
+        <li>Role-based access control</li>
+        <li>Secure server-side data storage</li>
+        <li>Regular backups</li>
+        <li>Activity logs and monitoring</li>
+        <li>Privacy policy and data governance</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Access Roles</h3>
+      <div class="alert">
+        <b>Administrator</b>
+        <p class="small">Manages users and system settings.</p>
+      </div>
+      <div class="alert">
+        <b>Satellite Operator</b>
+        <p class="small">Reviews satellite information and alerts.</p>
+      </div>
+      <div class="alert">
+        <b>Viewer</b>
+        <p class="small">Views permitted dashboard information.</p>
+      </div>
+    </div>
+  </div>
+
