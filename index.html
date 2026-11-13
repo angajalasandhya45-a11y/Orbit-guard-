@@ -100,14 +100,18 @@ async function load(){
  const key=query?'name_'+query.toLowerCase():'group_'+group;
  const cached=localStorage.getItem(cacheKey(key));
  if(cached){try{const c=JSON.parse(cached);if(Date.now()-c.time<2*60*60*1000){render(c.data);status(`Loaded ${c.data.length} records from this browser's cache. CelesTrak is not being queried again within the 2-hour refresh window.`,'ok');return}}catch(e){}}
- const url=query?`${API}?NAME=${encodeURIComponent(query)}&FORMAT=JSON`:`${API}?GROUP=${encodeURIComponent(group)}&FORMAT=JSON`;
+const url = query
+  ? `${API}?NAME=${encodeURIComponent(query)}&FORMAT=JSON`
+  : group === 'FENGYUN'
+    ? 'https://celestrak.org/NORAD/elements/gp.php?GROUP=fengyun-1c-debris&FORMAT=JSON'
+    : `${API}?GROUP=${encodeURIComponent(group)}&FORMAT=JSON`;
  button.disabled=true;button.textContent='Loadingâ€¦';status('Requesting data from CelesTrak. Please waitâ€¦');
  try{
   const response=await fetch(url,{headers:{Accept:'application/json'}});
   if(!response.ok)throw new Error(`CelesTrak returned HTTP ${response.status}. Stop here; do not repeatedly retry. Check the provider status or try again later.`);
   const data=await response.json();
   if(!Array.isArray(data))throw new Error('The provider response was not the expected JSON list.');
-  if (group !== 'ACTIVE') {
+  if (group !== 'ACTIVE' && group !== 'FENGYUN') {
   try {
     localStorage.setItem(
       cacheKey(key),
